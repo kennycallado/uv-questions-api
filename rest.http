@@ -24,6 +24,8 @@ Content-Type: application/json
 
 GET http://localhost:8000/api/v1/question/6
 
+DELETE http://localhost:8000/api/v1/question/6
+
 ###
 
 # FORM
@@ -48,4 +50,36 @@ Content-Type: application/json
   "description": "Questionnaire 10 of 9?"
 }
 
+GET http://localhost:8000/api/v1/form/10
+
+DELETE http://localhost:8000/api/v1/form/10
+
 # FORM-QUESTION
+
+GET http://localhost:8000/api/v1/form_question
+
+GET http://localhost:8000/api/v1/form_question/1
+
+POST http://localhost:8000/api/v1/form_question
+Content-Type: application/json
+
+{
+  "form_id": 1,
+  "question_id": 1
+}
+
+PUT http://localhost:8000/api/v1/form_question/37
+Content-Type: application/json
+
+{
+  "form_id": 1,
+  "question_id": 3
+}
+
+GET http://localhost:8000/api/v1/form_question/37
+
+DELETE http://localhost:8000/api/v1/form_question/37
+
+GET http://localhost:8000/api/v1/form_question/form/1
+
+###

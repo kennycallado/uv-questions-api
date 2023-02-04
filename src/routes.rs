@@ -1,6 +1,7 @@
 use rocket::fairing::AdHoc;
 
 use crate::app::controllers::form as form_controller;
+use crate::app::controllers::form_question as form_question_controller;
 use crate::app::controllers::question as question_controller;
 
 #[get("/health")]
@@ -31,6 +32,17 @@ pub fn router() -> AdHoc {
                     form_controller::store,
                     form_controller::destroy,
                     form_controller::update,
+                ],
+            )
+            .mount(
+                "/api/v1/form_question",
+                routes![
+                    form_question_controller::index,
+                    form_question_controller::show,
+                    form_question_controller::show_form,
+                    form_question_controller::store,
+                    form_question_controller::destroy,
+                    form_question_controller::update,
                 ],
             )
     })

@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS forms (
   id SERIAL PRIMARY KEY,
   title VARCHAR NOT NULL,
-  desciption VARCHAR NOT NULL
+  description VARCHAR NOT NULL
 );
 
-INSERT INTO forms (title, desciption) VALUES
+INSERT INTO forms (title, description) VALUES
   ('titulo 1', 'Questionnaire 1 of 9'),
   ('titulo 2', 'Questionnaire 2 of 9'),
   ('titulo 3', 'Questionnaire 3 of 9'),

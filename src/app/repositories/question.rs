@@ -8,7 +8,7 @@ use diesel::prelude::*;
 
 pub async fn find_all(db: Db) -> Vec<Question> {
     let questions: Vec<Question> = db
-        .run(move |conn| questions::table.load::<Question>(conn) )
+        .run(move |conn| questions::table.load::<Question>(conn))
         .await
         .unwrap();
 
@@ -17,7 +17,9 @@ pub async fn find_all(db: Db) -> Vec<Question> {
 
 pub async fn find(db: Db, id: i32) -> Question {
   let question= db
-    .run(move |conn| questions::table.find(id).get_result::<Question>(conn)).await.unwrap();
+    .run(move |conn| questions::table.find(id).get_result::<Question>(conn))
+    .await
+    .unwrap();
 
   question
 }

@@ -12,7 +12,7 @@ diesel::table! {
     forms (id) {
         id -> Int4,
         title -> Varchar,
-        desciption -> Varchar,
+        description -> Varchar,
     }
 }
 

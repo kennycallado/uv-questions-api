@@ -1,18 +1,18 @@
-use crate::database::schema::questions;
+use crate::database::schema::forms;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Clone, Deserialize, Queryable)]
 #[serde(crate = "rocket::serde")]
-pub struct Question {
+pub struct Form {
   pub id: i32,
-  pub q_type: String,
-  pub question: String,
+  pub title: String,
+  pub description: String,
 }
+
 
 #[derive(Debug, Clone, FromForm, Deserialize, Serialize, Insertable)]
-#[table_name = "questions"]
-pub struct NewQuestion {
-  pub q_type: String,
-  pub question: String,
+#[table_name = "forms"]
+pub struct NewForm {
+  pub title: String,
+  pub description: String,
 }
-

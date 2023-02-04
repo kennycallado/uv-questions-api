@@ -1,7 +1,7 @@
 use crate::database::schema::questions;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Serialize, Clone, Deserialize, Queryable)]
+#[derive(Debug, Serialize, Clone, Deserialize, Queryable, Identifiable)]
 #[serde(crate = "rocket::serde")]
 pub struct Question {
     pub id: i32,

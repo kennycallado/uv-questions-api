@@ -1,4 +1,4 @@
-GET http://localhost:8000/health
+geT http://localhost:8000/health
 
 # QUESTION
 
@@ -54,6 +54,8 @@ GET http://localhost:8000/api/v1/form/10
 
 DELETE http://localhost:8000/api/v1/form/10
 
+GET http://localhost:8000/api/v1/form/1/questions
+
 # FORM-QUESTION
 
 GET http://localhost:8000/api/v1/form_question
@@ -78,8 +80,6 @@ Content-Type: application/json
 
 GET http://localhost:8000/api/v1/form_question/37
 
-DELETE http://localhost:8000/api/v1/form_question/37
-
-GET http://localhost:8000/api/v1/form_question/form/1
+DELETE http://localhost:8000/api/v1/form_question/2
 
 ###

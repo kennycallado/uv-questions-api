@@ -32,6 +32,7 @@ pub fn router() -> AdHoc {
                     form_controller::store,
                     form_controller::destroy,
                     form_controller::update,
+                    form_controller::show_with_questions,
                 ],
             )
             .mount(
@@ -39,7 +40,6 @@ pub fn router() -> AdHoc {
                 routes![
                     form_question_controller::index,
                     form_question_controller::show,
-                    form_question_controller::show_form,
                     form_question_controller::store,
                     form_question_controller::destroy,
                     form_question_controller::update,

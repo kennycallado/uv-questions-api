@@ -18,13 +18,6 @@ pub async fn show(db: Db, id: i32) -> Json<FormQuestion> {
     Json(form_question)
 }
 
-#[get("/form/<form_id>")]
-pub async fn show_form(db: Db, form_id: i32) -> Json<Vec<FormQuestion>> {
-    let form_questions = form_question_repo::find_by_form(db, form_id).await;
-
-    Json(form_questions)
-}
-
 #[post("/", data = "<form_question>")]
 pub async fn store(db: Db, form_question: Json<NewFormQuestion>) -> Json<FormQuestion> {
     let form_question = form_question_repo::save(db, form_question.into_inner()).await;

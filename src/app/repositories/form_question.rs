@@ -14,19 +14,6 @@ pub async fn find_all(db: Db) -> Vec<FormQuestion> {
     form_questions
 }
 
-pub async fn find_by_form(db: Db, form_id: i32) -> Vec<FormQuestion> {
-    let form_questions: Vec<FormQuestion> = db
-        .run(move |conn| {
-            form_questions::table
-                .filter(form_questions::form_id.eq(form_id))
-                .load::<FormQuestion>(conn)
-        })
-        .await
-        .unwrap();
-
-    form_questions
-}
-
 pub async fn find(db: Db, id: i32) -> FormQuestion {
     let form_question: FormQuestion = db
         .run(move |conn| form_questions::table.find(id).first::<FormQuestion>(conn))

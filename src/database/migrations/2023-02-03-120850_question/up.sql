@@ -1,13 +1,12 @@
 CREATE TABLE IF NOT EXISTS questions (
   id SERIAL PRIMARY KEY,
   q_type VARCHAR NOT NULL,
-  question VARCHAR NOT NULL,
-  answer VARCHAR
+  question VARCHAR NOT NULL
 );
 
-INSERT INTO questions (q_type, question, answer) VALUES
-  ('range', '¿Bla bla bla bla bla bla?', NULL),
-  ('range', '¿Bla bla bla bla bla?', NULL),
-  ('range', '¿Bla bla bla bla?', NULL),
-  ('range', '¿Bla bla bla?', NULL),
-  ('range', '¿Bla bla?', NULL);
+INSERT INTO questions (q_type, question) VALUES
+  ('range', '¿Bla bla bla bla bla bla?'),
+  ('range', '¿Bla bla bla bla bla?'),
+  ('range', '¿Bla bla bla bla?'),
+  ('range', '¿Bla bla bla?'),
+  ('range', '¿Bla bla?');

@@ -1,5 +1,25 @@
 GET http://localhost:8000/health
 
-GET http://localhost:8000/api/v1/question/all
+GET http://localhost:8000/api/v1/question
 
-GET http://localhost:8000/api/v1/question/1
+GET http://localhost:8000/api/v1/question/5
+
+POST http://localhost:8000/api/v1/question
+Content-Type: application/json
+
+{
+    "q_type" : "range",
+    "question": "What is the answer to life, the universe and everything?"
+}
+
+PUT http://localhost:8000/api/v1/question/6
+Content-Type: application/json
+
+{
+  "q_type": "range",
+  "question": "What is the answer to life?"
+}
+
+GET http://localhost:8000/api/v1/question/6
+
+###

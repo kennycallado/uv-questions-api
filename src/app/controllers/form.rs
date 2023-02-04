@@ -1,9 +1,10 @@
 use rocket::serde::json::Json;
 
 use crate::app::models::form::{Form, FormWithQuestions, NewForm};
-use crate::app::models::question::Question;
-use crate::app::repositories::form as form_repo;
 use crate::config::database::Db;
+
+use crate::app::repositories::form as form_repo;
+use crate::app::repositories::form_question as form_question_repo;
 
 #[get("/")]
 pub async fn index(db: Db) -> Json<Vec<FormWithQuestions>> {
@@ -14,17 +15,9 @@ pub async fn index(db: Db) -> Json<Vec<FormWithQuestions>> {
 
 #[get("/<id>")]
 pub async fn show(db: Db, id: i32) -> Json<FormWithQuestions> {
-    // let form: Form = form_repo::find(db, id).await;
     let form: FormWithQuestions = form_repo::find(db, id).await;
 
     Json(form)
-}
-
-#[get("/<id>/questions")]
-pub async fn show_with_questions(db: Db, id: i32) -> Json<(Form, Vec<Question>)> {
-    let (form, questions): (Form, Vec<Question>) = form_repo::find_with_questions(db, id).await;
-
-    Json((form, questions))
 }
 
 #[post("/", data = "<form>")]
@@ -41,9 +34,31 @@ pub async fn destroy(db: Db, id: i32) -> Json<Form> {
     Json(form)
 }
 
-#[put("/<id>", data = "<form>")]
-pub async fn update(db: Db, id: i32, form: Json<NewForm>) -> Json<Form> {
-    let form: Form = form_repo::update(db, id, form.into_inner()).await;
+// #[put("/<id>", data = "<form>")]
+// pub async fn update(db: Db, id: i32, form: Json<NewForm>) -> Json<Form> {
+//     let form: Form = form_repo::update(db, id, form.into_inner()).await;
+
+//     Json(form)
+// }
+
+#[put("/<id>", data = "<new_form>")]
+pub async fn update(db: Db, id: i32, new_form: Json<FormWithQuestions>) -> Json<FormWithQuestions> {
+    // update the form itself
+    let form: NewForm = NewForm {
+        title: new_form.title.clone(),
+        description: new_form.description.clone(),
+    };
+    form_repo::update(&db, id, form).await;
+
+    let questions = form_question_repo::update_questions(db, id, new_form.questions.clone()).await;
+
+    // update the questions
+    let form = FormWithQuestions {
+        id: new_form.id,
+        title: new_form.title.clone(),
+        description: new_form.description.clone(),
+        questions,
+    };
 
     Json(form)
 }

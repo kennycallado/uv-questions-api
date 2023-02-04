@@ -1,4 +1,4 @@
-geT http://localhost:8000/health
+GET http://localhost:8000/health
 
 # QUESTION
 
@@ -42,44 +42,33 @@ Content-Type: application/json
   "description": "Questionnaire 10"
 }
 
-PUT http://localhost:8000/api/v1/form/10
+GET http://localhost:8000/api/v1/form/1
+
+PUT http://localhost:8000/api/v1/form/1
 Content-Type: application/json
 
 {
-  "title": "titulo 10",
-  "description": "Questionnaire 10 of 9?"
+  "id": 1,
+  "title": "titulo blabla",
+  "description": "Questionnaire 1 of 9",
+  "questions": [
+    {
+      "id": 6,
+      "q_type": "range",
+      "question": "La pregunta del millon"
+    },
+    {
+      "id": 1,
+      "q_type": "range",
+      "question": "¿Bla bla bla bla?"
+    },
+    {
+      "id": 2,
+      "q_type": "range",
+      "question": "¿Bla bla bla?"
+    }
+  ]
 }
 
-GET http://localhost:8000/api/v1/form/10
+GET http://localhost:8000/api/v1/form/1
 
-DELETE http://localhost:8000/api/v1/form/10
-
-GET http://localhost:8000/api/v1/form/1/questions
-
-# FORM-QUESTION
-
-GET http://localhost:8000/api/v1/form_question
-
-GET http://localhost:8000/api/v1/form_question/1
-
-POST http://localhost:8000/api/v1/form_question
-Content-Type: application/json
-
-{
-  "form_id": 1,
-  "question_id": 1
-}
-
-PUT http://localhost:8000/api/v1/form_question/37
-Content-Type: application/json
-
-{
-  "form_id": 1,
-  "question_id": 3
-}
-
-GET http://localhost:8000/api/v1/form_question/37
-
-DELETE http://localhost:8000/api/v1/form_question/2
-
-###

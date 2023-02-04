@@ -1,25 +1,22 @@
+use diesel::prelude::*;
+
 use crate::app::models::form::{Form, FormWithQuestions, NewForm};
 use crate::app::models::form_question::FormQuestion;
 use crate::app::models::question::Question;
 use crate::config::database::Db;
 
+// Esto no me gusta nada.. en form solo squema de form
+// quizá from_question pero ¿questions?. Como mucho en
+// el repo de form_questions
 use crate::database::schema::{form_questions, forms, questions};
 
-use diesel::prelude::*;
-
 pub async fn find_all(db: Db) -> Vec<FormWithQuestions> {
-    // let forms: Vec<Form> = db
-    //     .run(move |conn| forms::table.load::<Form>(conn))
-    //     .await
-    //     .unwrap();
-
-    // forms
-
     let forms: Vec<FormWithQuestions> = db
         .run(move |conn| {
             let forms = forms::table.load::<Form>(conn);
 
-            let forms_with_questions = forms.map(|forms| {
+            // let forms_with_questions = forms.map(|forms| {
+            forms.map(|forms| {
                 forms
                     .into_iter()
                     .map(|form| {
@@ -46,9 +43,7 @@ pub async fn find_all(db: Db) -> Vec<FormWithQuestions> {
                         }
                     })
                     .collect()
-            });
-
-            forms_with_questions
+            })
         })
         .await
         .unwrap();
@@ -64,11 +59,16 @@ pub async fn find(db: Db, id: i32) -> FormWithQuestions {
 
     let questions: Vec<Question> = db
         .run(move |conn| {
-            questions::table
-                .inner_join(form_questions::table)
+            form_questions::table
+                .inner_join(questions::table)
                 .filter(form_questions::form_id.eq(id))
                 .select(questions::all_columns)
                 .load::<Question>(conn)
+            // questions::table
+            //     .inner_join(form_questions::table)
+            //     .filter(form_questions::form_id.eq(id))
+            //     .select(questions::all_columns)
+            //     .load::<Question>(conn)
         })
         .await
         .unwrap();
@@ -79,40 +79,6 @@ pub async fn find(db: Db, id: i32) -> FormWithQuestions {
         description: form.description,
         questions,
     }
-}
-
-// pub async fn find(db: Db, id: i32) -> Form {
-//     let form: Form = db
-//         .run(move |conn| forms::table.find(id).first::<Form>(conn))
-//         .await
-//         .unwrap();
-
-//     form
-// }
-
-pub async fn find_with_questions(db: Db, id: i32) -> (Form, Vec<Question>) {
-    let form: Form = db
-        .run(move |conn| forms::table.find(id).first::<Form>(conn))
-        .await
-        .unwrap();
-
-    let questions: Vec<Question> = db
-        .run(move |conn| {
-            questions::table
-                .inner_join(form_questions::table)
-                .filter(form_questions::form_id.eq(id))
-                .select(questions::all_columns)
-                .load::<Question>(conn)
-        })
-        .await
-        .unwrap();
-
-    // let questions: Vec<Question> = db
-    //     .run(move |conn| questions::table.inner_join(form_question) .filter(questions::form_id.eq(id)).load::<Question>(conn))
-    //     .await
-    //     .unwrap();
-
-    (form, questions)
 }
 
 pub async fn save(db: Db, new: NewForm) -> Form {
@@ -137,7 +103,7 @@ pub async fn remove(db: Db, id: i32) -> Form {
     form
 }
 
-pub async fn update(db: Db, id: i32, new: NewForm) -> Form {
+pub async fn update(db: &Db, id: i32, new: NewForm) -> Form {
     let form: Form = db
         .run(move |conn| {
             let form = diesel::update(forms::table.find(id));

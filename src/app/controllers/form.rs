@@ -50,12 +50,13 @@ pub async fn update(db: Db, id: i32, new_form: Json<FormWithQuestions>) -> Json<
     };
     form_repo::update(&db, id, form).await;
 
+    // update the questions
     let questions = form_question_repo::update_questions(db, id, new_form.questions.clone()).await;
 
-    // update the questions
+    // Prepare the response
     let form = FormWithQuestions {
-        id: new_form.id,
-        title: new_form.title.clone(),
+        id: new_form.id,               // Ojo, esto no es real
+        title: new_form.title.clone(), // Esto sí es real
         description: new_form.description.clone(),
         questions,
     };

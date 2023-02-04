@@ -1,6 +1,7 @@
 GET http://localhost:8000/health
 
 # QUESTION
+#{{{
 
 GET http://localhost:8000/api/v1/question
 
@@ -26,9 +27,11 @@ GET http://localhost:8000/api/v1/question/6
 
 DELETE http://localhost:8000/api/v1/question/6
 
-###
+GET http://localhost:8000/api/v1/question
+#}}}
 
 # FORM
+#{{{
 
 GET http://localhost:8000/api/v1/form
 
@@ -42,23 +45,25 @@ Content-Type: application/json
   "description": "Questionnaire 10"
 }
 
+GET http://localhost:8000/api/v1/form/10
+
 GET http://localhost:8000/api/v1/form/1
 
 PUT http://localhost:8000/api/v1/form/1
 Content-Type: application/json
 
 {
-  "id": 1,
-  "title": "titulo blabla",
+  "id": 11212,
+  "title": "titulo bla bla",
   "description": "Questionnaire 1 of 9",
   "questions": [
     {
-      "id": 6,
-      "q_type": "range",
-      "question": "La pregunta del millon"
+      "id": 4,
+      "q_type": "patata",
+      "question": "patatas everywhere"
     },
     {
-      "id": 1,
+      "id": 3,
       "q_type": "range",
       "question": "¿Bla bla bla bla?"
     },
@@ -72,3 +77,6 @@ Content-Type: application/json
 
 GET http://localhost:8000/api/v1/form/1
 
+GET http://localhost:8000/api/v1/form
+
+#}}}

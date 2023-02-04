@@ -27,4 +27,3 @@ fn main() {
     /* El macro launch en server hace wrap de main */
     server::main();
 }
-

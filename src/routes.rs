@@ -19,6 +19,9 @@ pub fn router() -> AdHoc {
                     // table_controller::index,
                     question_controller::index,
                     question_controller::show,
+                    question_controller::store,
+                    question_controller::destroy,
+                    question_controller::update,
                 ],
             )
             .mount(

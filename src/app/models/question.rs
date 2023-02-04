@@ -7,7 +7,6 @@ pub struct Question {
   pub id: i32,
   pub q_type: String,
   pub question: String,
-  pub answer: Option<String>,
 }
 
 
@@ -16,6 +15,5 @@ pub struct Question {
 pub struct NewQuestion {
   pub q_type: String,
   pub question: String,
-  pub answer: Option<String>,
 }
 

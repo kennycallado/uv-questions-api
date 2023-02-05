@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS answers (
   id SERIAL PRIMARY KEY,
   question_id SERIAL NOT NULL,
   answer VARCHAR(10) NOT NULL,
-  CONSTRAINT fk_question FOREIGN KEY(question_id) REFERENCES questions(id) ON DELETE CASCADE
+  CONSTRAINT fk_answer_question FOREIGN KEY(question_id) REFERENCES questions(id) ON DELETE CASCADE
 );
 
 INSERT INTO answers (question_id, answer) VALUES

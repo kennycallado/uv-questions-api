@@ -2,8 +2,8 @@ CREATE TABLE IF NOT EXISTS form_questions (
   id SERIAL PRIMARY KEY,
   form_id SERIAL NOT NULL,
   question_id SERIAL NOT NULL,
-  CONSTRAINT fk_form FOREIGN KEY(form_id) REFERENCES forms(id) ON DELETE CASCADE,
-  CONSTRAINT fk_question FOREIGN KEY(question_id) REFERENCES questions(id) ON DELETE CASCADE
+  CONSTRAINT fk_fq_form FOREIGN KEY(form_id) REFERENCES forms(id) ON DELETE CASCADE,
+  CONSTRAINT fk_fq_question FOREIGN KEY(question_id) REFERENCES questions(id) ON DELETE CASCADE
 );
 
 INSERT INTO form_questions (form_id, question_id) VALUES

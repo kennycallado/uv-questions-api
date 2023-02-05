@@ -80,3 +80,25 @@ GET http://localhost:8000/api/v1/form/1
 GET http://localhost:8000/api/v1/form
 
 #}}}
+
+# USER
+#{{{
+
+GET http://localhost:8000/api/v1/user
+
+GET http://localhost:8000/api/v1/user/1
+
+PUT http://localhost:8000/api/v1/user/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email": "kenny@callado.es",
+  "token": "092834342890fkojlaskfd"
+}
+
+GET http://localhost:8000/api/v1/user/1
+
+GET http://localhost:8000/api/v1/user
+
+#}}}

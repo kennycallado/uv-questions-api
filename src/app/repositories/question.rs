@@ -1,10 +1,9 @@
-use crate::app::models::question::{NewQuestion, Question};
+use diesel::prelude::*;
+
 use crate::config::database::Db;
+use crate::app::models::question::{NewQuestion, Question};
 
 use crate::database::schema::questions;
-// use crate::database::schema::questions::dsl::*;
-
-use diesel::prelude::*;
 
 pub async fn find_all(db: Db) -> Vec<Question> {
     let questions: Vec<Question> = db

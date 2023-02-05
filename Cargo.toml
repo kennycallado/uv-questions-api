@@ -3,6 +3,9 @@ name = "uv-question-api"
 version = "0.1.0"
 edition = "2021"
 
+[profile.release]
+strip = true
+
 [dependencies]
 diesel = { version = "1.4.4", features = ["postgres"] }
 diesel_migrations = "1.3"

@@ -5,6 +5,8 @@ use crate::app::models::form_question::FormQuestion;
 use crate::app::models::question::Question;
 use crate::config::database::Db;
 
+use crate::app::repositories::form_question as form_question_repo;
+
 // Esto no me gusta nada.. en form solo squema de form
 // quizá from_question pero ¿questions?. Como mucho en
 // el repo de form_questions
@@ -57,21 +59,24 @@ pub async fn find(db: Db, id: i32) -> FormWithQuestions {
         .await
         .unwrap();
 
-    let questions: Vec<Question> = db
-        .run(move |conn| {
-            form_questions::table
-                .inner_join(questions::table)
-                .filter(form_questions::form_id.eq(id))
-                .select(questions::all_columns)
-                .load::<Question>(conn)
-            // questions::table
-            //     .inner_join(form_questions::table)
-            //     .filter(form_questions::form_id.eq(id))
-            //     .select(questions::all_columns)
-            //     .load::<Question>(conn)
-        })
-        .await
-        .unwrap();
+    // TODO: Test this
+    // may be better to ask to form_question repo...
+    let questions: Vec<Question> = form_question_repo::get_questions(db, form.id).await;
+    // let questions: Vec<Question> = db
+    //     .run(move |conn| {
+    //         form_questions::table
+    //             .inner_join(questions::table)
+    //             .filter(form_questions::form_id.eq(id))
+    //             .select(questions::all_columns)
+    //             .load::<Question>(conn)
+    //         // questions::table
+    //         //     .inner_join(form_questions::table)
+    //         //     .filter(form_questions::form_id.eq(id))
+    //         //     .select(questions::all_columns)
+    //         //     .load::<Question>(conn)
+    //     })
+    //     .await
+    //     .unwrap();
 
     FormWithQuestions {
         id: form.id,

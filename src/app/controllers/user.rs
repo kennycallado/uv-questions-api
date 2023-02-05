@@ -1,7 +1,7 @@
 use rocket::serde::json::Json;
 
-use crate::config::database::Db;
 use crate::app::models::user::User;
+use crate::config::database::Db;
 
 use crate::app::repositories::user as user_repo;
 

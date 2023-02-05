@@ -1,7 +1,7 @@
 use diesel::prelude::*;
 
-use crate::config::database::Db;
 use crate::app::models::user::User;
+use crate::config::database::Db;
 
 use crate::database::schema::usuarios;
 
@@ -10,7 +10,7 @@ pub async fn find_all(db: Db) -> Vec<User> {
         .run(move |conn| usuarios::table.load::<User>(conn))
         .await
         .unwrap();
-    
+
     users
 }
 
@@ -28,12 +28,11 @@ pub async fn update(db: Db, id: i32, new: User) -> User {
         .run(move |conn| {
             let user = diesel::update(usuarios::table.find(id));
 
-            user
-                .set((
-                    usuarios::columns::email.eq(new.email),
-                    usuarios::columns::token.eq(new.token),
-                ))
-                .get_result::<User>(conn)
+            user.set((
+                usuarios::columns::email.eq(new.email),
+                usuarios::columns::token.eq(new.token),
+            ))
+            .get_result::<User>(conn)
         })
         .await
         .unwrap();

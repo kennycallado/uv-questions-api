@@ -102,3 +102,34 @@ GET http://localhost:8000/api/v1/user/1
 GET http://localhost:8000/api/v1/user
 
 #}}}
+
+# ANSWER
+#{{{
+
+GET http://localhost:8000/api/v1/answer
+
+GET http://localhost:8000/api/v1/answer/5
+
+POST http://localhost:8000/api/v1/answer
+Content-Type: application/json
+
+{
+    "question_id": 1,
+    "answer": "BLA"
+}
+
+PUT http://localhost:8000/api/v1/answer/5
+Content-Type: application/json
+
+{
+  "question_id": 2,
+  "answer": "BLA"
+}
+
+GET http://localhost:8000/api/v1/answer/5
+
+DELETE http://localhost:8000/api/v1/answer/13
+
+GET http://localhost:8000/api/v1/answer
+#}}}
+

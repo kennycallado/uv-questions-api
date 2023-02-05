@@ -1,7 +1,7 @@
 use diesel::prelude::*;
 
-use crate::config::database::Db;
 use crate::app::models::question::{NewQuestion, Question};
+use crate::config::database::Db;
 
 use crate::database::schema::questions;
 
@@ -15,7 +15,7 @@ pub async fn find_all(db: Db) -> Vec<Question> {
 }
 
 pub async fn find(db: Db, id: i32) -> Question {
-    let question = db
+    let question: Question = db
         .run(move |conn| questions::table.find(id).get_result::<Question>(conn))
         .await
         .unwrap();

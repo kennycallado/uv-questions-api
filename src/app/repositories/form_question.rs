@@ -18,6 +18,7 @@ pub async fn get_questions(db: Db, form_id: i32) -> Vec<Question> {
         .unwrap();
 
     let questions: Vec<Question> = db
+        // There is other way to proceed in paper_answer_repo
         .run(move |conn| {
             form_questions
                 .into_iter()
@@ -61,9 +62,7 @@ async fn save_questions(db: Db, form_id: i32, new_questions: Vec<Question>) -> V
     })
     .await;
 
-    let questions = get_questions(db, form_id).await;
-
-    questions
+    get_questions(db, form_id).await
 }
 
 async fn remove_old_questions(db: &Db, form_id: i32) -> Vec<FormQuestion> {

@@ -20,3 +20,8 @@ answer (fk question)
 ---
 
 Quizá un step vincula form con paper... a la vez que módulo u otros..
+
+# TODO:
+Para mañana el update... creo...
+Quiero que me muestre la pregunta no solo el id
+ummm revisar todo eso en paper

@@ -4,6 +4,7 @@ use crate::app::controllers::answer as answer_controller;
 use crate::app::controllers::form as form_controller;
 use crate::app::controllers::question as question_controller;
 use crate::app::controllers::user as user_controller;
+use crate::app::controllers::paper as paper_controller;
 
 #[get("/health")]
 fn index() -> &'static str {
@@ -50,6 +51,14 @@ pub fn router() -> AdHoc {
                     answer_controller::store,
                     answer_controller::destroy,
                     answer_controller::update,
+                ],
+            ).mount("/api/v1/paper",
+                routes![
+                    paper_controller::index,
+                    paper_controller::show,
+                    paper_controller::store,
+                    paper_controller::destroy,
+                    paper_controller::update,
                 ],
             )
     })

@@ -133,3 +133,34 @@ DELETE http://localhost:8000/api/v1/answer/13
 GET http://localhost:8000/api/v1/answer
 #}}}
 
+# PAPERS
+#{{{
+
+GET http://localhost:8000/api/v1/paper
+
+GET http://localhost:8000/api/v1/paper/5
+
+POST http://localhost:8000/api/v1/paper
+Content-Type: application/json
+
+{
+    "user_id": 1,
+    "form_id": 1
+}
+
+PUT http://localhost:8000/api/v1/paper/5
+Content-Type: application/json
+
+{
+  "user_id": 2,
+  "form_id": 4
+}
+
+GET http://localhost:8000/api/v1/paper/5
+
+DELETE http://localhost:8000/api/v1/paper/10
+
+GET http://localhost:8000/api/v1/paper
+
+#}}}
+

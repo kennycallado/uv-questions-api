@@ -9,15 +9,6 @@ diesel::table! {
 }
 
 diesel::table! {
-    form_answers (id) {
-        id -> Int4,
-        user_id -> Int4,
-        form_id -> Int4,
-        answer_id -> Int4,
-    }
-}
-
-diesel::table! {
     form_questions (id) {
         id -> Int4,
         form_id -> Int4,
@@ -30,6 +21,14 @@ diesel::table! {
         id -> Int4,
         title -> Varchar,
         description -> Varchar,
+    }
+}
+
+diesel::table! {
+    papers (id) {
+        id -> Int4,
+        user_id -> Int4,
+        form_id -> Int4,
     }
 }
 
@@ -50,17 +49,16 @@ diesel::table! {
 }
 
 diesel::joinable!(answers -> questions (question_id));
-diesel::joinable!(form_answers -> answers (answer_id));
-diesel::joinable!(form_answers -> forms (form_id));
-diesel::joinable!(form_answers -> usuarios (user_id));
 diesel::joinable!(form_questions -> forms (form_id));
 diesel::joinable!(form_questions -> questions (question_id));
+diesel::joinable!(papers -> forms (form_id));
+diesel::joinable!(papers -> usuarios (user_id));
 
 diesel::allow_tables_to_appear_in_same_query!(
     answers,
-    form_answers,
     form_questions,
     forms,
+    papers,
     questions,
     usuarios,
 );

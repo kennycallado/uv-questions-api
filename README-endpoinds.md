@@ -1,11 +1,11 @@
 
 - >> (index) GET /health
-  - String -> questions api ready
+  - String -> \"questions api ready\"
 
 - **Question**
   - >> (index) GET /api/v1/question/
 
-    - Devuelve -> Vec<Question> :
+    - Devuelve -> Vec\<Question\>
     ``` json
     [
       {
@@ -35,7 +35,7 @@
     }
     ```
 
-  - >> (show) GET /api/v1/question/<id>
+  - >> (show) GET /api/v1/question/\<id\>
     - Devuelve -> Question
     ``` json
     {
@@ -45,7 +45,7 @@
     }
     ```
 
-  - >> (destroy) DELETE /api/v1/question/<id>
+  - >> (destroy) DELETE /api/v1/question/\<id\>
     - Devuelve -> Question
     ``` json
     {
@@ -55,7 +55,7 @@
     }
     ```
 
-  - >> (update) PUT /api/v1/question/<id>
+  - >> (update) PUT /api/v1/question/\<id\>
     - Devuelve -> Question
     ``` json
     {
@@ -67,7 +67,7 @@
 
 - *Form*
   - >> (index) GET /api/v1/form/
-    - Devuelve -> Vec<FormWithQuestions>
+    - Devuelve -> Vec\<FormWithQuestions\>
     ``` json
     [
       {
@@ -105,7 +105,7 @@
     }
     ```
 
-  - >> (show) GET /api/v1/form/<id>
+  - >> (show) GET /api/v1/form/\<id\>
     - Devuelve -> FormWithQuestions
     ``` json
     {
@@ -123,7 +123,7 @@
     }
     ```
 
-  - >> (destroy) DELETE /api/v1/form/<id>
+  - >> (destroy) DELETE /api/v1/form/\<id\>
     - Devuelve -> Form
     ``` json
     {
@@ -133,7 +133,7 @@
     }
     ```
 
-  - >> (update) PUT /api/v1/form/<id>
+  - >> (update) PUT /api/v1/form/\<id\>
     - Recibe -> FormWithQuestions
     ``` json
     {
@@ -170,7 +170,7 @@
 
 - *Paper*
   - >> (index) GET /api/v1/paper/
-    - Devuelve -> Vec<PaperWithAnswers>
+    - Devuelve -> Vec\<PaperWithAnswers\>
     ``` json
     [
       {
@@ -229,7 +229,7 @@
     }
     ```
 
-  - >> (show) GET /api/v1/paper/<id>
+  - >> (show) GET /api/v1/paper/\<id\>
     - Devuelve -> PaperWithAnswers
     ``` json
     {
@@ -259,7 +259,7 @@
     }
     ```
 
-  - >> (destroy) DELETE /api/v1/paper/<id>
+  - >> (destroy) DELETE /api/v1/paper/\<id\>
     - Devuelve -> PaperWithAnswers
     ``` json
     {
@@ -280,7 +280,7 @@
     }
     ```
 
-  - >> (update) PUT /api/v1/paper/<id>
+  - >> (update) PUT /api/v1/paper/\<id\>
     - Recibe -> NewPaperWithData
     ``` json
     {
@@ -374,7 +374,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     }
     ```
 
-  - >> (show) GET /api/v1/answer/<id>
+  - >> (show) GET /api/v1/answer/\<id\>
     - Devuelve -> AnswerWithQuestion
     ``` json
     {
@@ -388,7 +388,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     }
     ```
 
-  - >> (destroy) DELETE /api/v1/answer/<id>
+  - >> (destroy) DELETE /api/v1/answer/\<id\>
     - Devuelve ->  AnswerWithQuestion
     ``` json
     {
@@ -398,7 +398,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     }
     ```
 
-  - >> (update) PUT /api/v1/answer/<id>
+  - >> (update) PUT /api/v1/answer/\<id\>
     - Recibe -> NewAnswer
     ``` json
     {
@@ -422,7 +422,7 @@ Los siguientes endpoinds pueden ser eliminados ??
 
 - *User*
   - >> (index) GET /api/v1/user/
-    - Devuelve -> Vec<User>
+    - Devuelve -> Vec\<User\>
     ``` json
     [
       {
@@ -434,7 +434,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     ]
     ```
 
-  - >> (show) GET /api/v1/user/<id>
+  - >> (show) GET /api/v1/user/\<id\>
     - Devuelve -> User
     ``` json
     {
@@ -444,7 +444,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     }
     ```
   
-  - >> (update) PUT /api/v1/user/<id>
+  - >> (update) PUT /api/v1/user/\<id\>
     - Recibe -> 
     ``` json
     {

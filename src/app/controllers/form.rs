@@ -6,6 +6,16 @@ use crate::config::database::Db;
 use crate::app::repositories::form as form_repo;
 use crate::app::repositories::form_question as form_question_repo;
 
+#[options("/")]
+pub async fn log_post_req() {
+    println!("AUTH: Create a new form");
+}
+
+#[options("/<id>")]
+pub async fn log_put_req(id: i32) {
+    println!("AUTH: Update form id: {}", id);
+}
+
 #[get("/")]
 pub async fn index(db: Db) -> Json<Vec<FormWithQuestions>> {
     let forms: Vec<FormWithQuestions> = form_repo::find_all(db).await;

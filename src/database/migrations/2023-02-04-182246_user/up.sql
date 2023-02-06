@@ -10,4 +10,4 @@ INSERT INTO usuarios (email, token) VALUES
   ('ldsfj@pwoei.es', '1iadf920s9'),
   ('sdflj@pwoei.es', '1iasdf9209'),
   ('jlsdf@pwoei.es', '1i9adfs209')
-
+  ;

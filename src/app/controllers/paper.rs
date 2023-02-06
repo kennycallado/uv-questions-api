@@ -5,6 +5,16 @@ use crate::config::database::Db;
 
 use crate::app::repositories::paper as paper_repo;
 
+#[options("/")]
+pub async fn log_post_req() {
+    println!("AUTH: Create a new paper");
+}
+
+#[options("/<id>")]
+pub async fn log_put_req(id: i32) {
+    println!("AUTH: Update paper id: {}", id);
+}
+
 #[get("/")]
 pub async fn index(db: Db) -> Json<Vec<PaperWithAnswers>> {
     let papers: Vec<PaperWithAnswers> = paper_repo::find_all(db).await;

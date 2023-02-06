@@ -29,8 +29,10 @@ Documento [anexo](./README-endpoinds.md).
 
 ## TODO:
 
-- q_type debería ser una tabla?
-- Shadowing id ??
+- Crear imagen, subirla, desplegar en pi.
+
+- [ ] q_type debería ser una tabla?
+- [ ] Shadowing id ??
 
 - [ ] Revisar lógica funciona correctamente.
 - [ ] Unificar criterios en lógica.
@@ -40,3 +42,4 @@ Documento [anexo](./README-endpoinds.md).
 - [ ] Validación y autorización
 - [ ] Realizar tests.
 
+- [ ] CI/CD hacia hub.docker

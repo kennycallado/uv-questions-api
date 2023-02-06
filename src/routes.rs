@@ -23,6 +23,8 @@ pub fn router() -> AdHoc {
                     question_controller::store,
                     question_controller::destroy,
                     question_controller::update,
+                    question_controller::log_post_req,
+                    question_controller::log_put_req,
                 ],
             )
             .mount(
@@ -33,6 +35,8 @@ pub fn router() -> AdHoc {
                     form_controller::store,
                     form_controller::destroy,
                     form_controller::update,
+                    form_controller::log_post_req,
+                    form_controller::log_put_req,
                 ],
             )
             .mount(
@@ -51,6 +55,8 @@ pub fn router() -> AdHoc {
                     answer_controller::store,
                     answer_controller::destroy,
                     answer_controller::update,
+                    answer_controller::log_post_req,
+                    answer_controller::log_put_req,
                 ],
             )
             .mount(
@@ -61,6 +67,8 @@ pub fn router() -> AdHoc {
                     paper_controller::store,
                     paper_controller::destroy,
                     paper_controller::update,
+                    paper_controller::log_post_req,
+                    paper_controller::log_put_req,
                 ],
             )
     })

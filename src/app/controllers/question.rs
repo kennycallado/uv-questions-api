@@ -4,6 +4,16 @@ use crate::app::models::question::{NewQuestion, Question};
 use crate::app::repositories::question as question_repo;
 use crate::config::database::Db;
 
+#[options("/")]
+pub async fn log_post_req() {
+    println!("AUTH: Create a new question");
+}
+
+#[options("/<id>")]
+pub async fn log_put_req(id: i32) {
+    println!("AUTH: Update question id: {}", id);
+}
+
 #[get("/")]
 pub async fn index(db: Db) -> Json<Vec<Question>> {
     let questions: Vec<Question> = question_repo::find_all(db).await;

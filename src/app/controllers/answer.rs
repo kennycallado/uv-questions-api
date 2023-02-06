@@ -5,6 +5,16 @@ use crate::config::database::Db;
 
 use crate::app::repositories::answer as answer_repo;
 
+#[options("/")]
+pub async fn log_post_req() {
+    println!("AUTH: Create a new answer");
+}
+
+#[options("/<id>")]
+pub async fn log_put_req(id: i32) {
+    println!("AUTH: Update answer id: {}", id);
+}
+
 #[get("/")]
 pub async fn index(db: Db) -> Json<Vec<AnswerWithQuestion>> {
     let answers: Vec<AnswerWithQuestion> = answer_repo::find_all(db).await;

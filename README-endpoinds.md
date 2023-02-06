@@ -65,7 +65,7 @@
     }
     ```
 
-- *Form*
+- **Form**
   - >> (index) GET /api/v1/form/
     - Devuelve -> Vec\<FormWithQuestions\>
     ``` json
@@ -168,7 +168,7 @@
     }
     ```
 
-- *Paper*
+- **Paper**
   - >> (index) GET /api/v1/paper/
     - Devuelve -> Vec\<PaperWithAnswers\>
     ``` json
@@ -333,8 +333,7 @@
 
 Los siguientes endpoinds pueden ser eliminados ??
 
-- *Answer*
-
+- **Answer**
   - >> (index) GET /api/v1/answer/
     - Devuelve -> AnswerWithQuestion
     ``` json
@@ -420,7 +419,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     }
     ```
 
-- *User*
+- **User**
   - >> (index) GET /api/v1/user/
     - Devuelve -> Vec\<User\>
     ``` json

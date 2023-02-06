@@ -3,7 +3,8 @@ use serde::{Deserialize, Serialize};
 
 use crate::app::models::form::Form;
 use crate::app::models::user::User;
-use crate::app::models::answer::Answer;
+
+use super::answer::{AnswerWithQuestion, NewAnswer};
 
 #[derive(Debug, Clone, Serialize, Deserialize, Queryable, Identifiable, Associations)]
 #[serde(crate = "rocket::serde")]
@@ -28,14 +29,14 @@ pub struct PaperWithAnswers {
     pub id: i32,
     pub user: User,
     pub form: Form,
-    pub answers: Vec<Answer>,
+    pub answers: Vec<AnswerWithQuestion>,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize, Queryable, Identifiable)]
 #[table_name = "papers"]
-pub struct PaperWithAnswersData {
+pub struct NewPaperWithData {
     pub id: i32,
     pub user_id: i32,
     pub form_id: i32,
-    pub answers: Vec<Answer>,
+    pub answers: Vec<NewAnswer>,
 }

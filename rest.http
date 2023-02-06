@@ -122,13 +122,13 @@ PUT http://localhost:8000/api/v1/answer/5
 Content-Type: application/json
 
 {
-  "question_id": 2,
+  "question_id": 5,
   "answer": "BLA"
 }
 
 GET http://localhost:8000/api/v1/answer/5
 
-DELETE http://localhost:8000/api/v1/answer/13
+DELETE http://localhost:8000/api/v1/answer/17
 
 GET http://localhost:8000/api/v1/answer
 #}}}
@@ -148,37 +148,32 @@ Content-Type: application/json
   "form_id": 4
 }
 
-GET http://localhost:8000/api/v1/paper/5
+GET http://localhost:8000/api/v1/paper/9
 
-PUT http://localhost:8000/api/v1/paper/5
+GET http://localhost:8000/api/v1/answer
+
+PUT http://localhost:8000/api/v1/paper/9
 Content-Type: application/json
 
 {
-  "id": 2,
+  "id": 10,
   "user_id": 2,
-  "form_id": 2,
+  "form_id": 4,
   "answers": [
     {
-      "id": 1,
-      "question_id": 2,
-      "answer": "D"
+      "question_id": 1,
+      "answer": "BLA"
     },
     {
-      "id": 5,
       "question_id": 2,
-      "answer": "E"
-    },
-    {
-      "id": 6,
-      "question_id": 3,
-      "answer": "F"
+      "answer": "B"
     }
   ]
 }
 
 GET http://localhost:8000/api/v1/paper/5
 
-DELETE http://localhost:8000/api/v1/paper/10
+DELETE http://localhost:8000/api/v1/paper/9
 
 GET http://localhost:8000/api/v1/paper
 

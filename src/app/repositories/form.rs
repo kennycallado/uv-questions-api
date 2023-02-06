@@ -60,7 +60,7 @@ pub async fn find(db: Db, id: i32) -> FormWithQuestions {
         .unwrap();
 
     // TODO: Test this
-    // may be better to ask to form_question repo...
+    // maybe better to ask to form_question repo...
     let questions: Vec<Question> = form_question_repo::get_questions(db, form.id).await;
     // let questions: Vec<Question> = db
     //     .run(move |conn| {

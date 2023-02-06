@@ -1,6 +1,6 @@
 use diesel::prelude::*;
 
-use crate::app::models::answer::{Answer, NewAnswer, AnswerWithQuestion};
+use crate::app::models::answer::{Answer, AnswerWithQuestion, NewAnswer};
 use crate::app::models::question::Question;
 use crate::config::database::Db;
 
@@ -11,7 +11,7 @@ pub async fn find_all(db: Db) -> Vec<AnswerWithQuestion> {
     let answers: Vec<AnswerWithQuestion> = db
         .run(move |conn| {
             let answers = answers::table.load::<Answer>(conn);
-      
+
             answers.map(|answers| {
                 answers
                     .into_iter()
@@ -64,12 +64,14 @@ pub async fn save(db: Db, new: NewAnswer) -> AnswerWithQuestion {
         .run(move |conn| {
             let answer: Answer = diesel::insert_into(answers::table)
                 .values(&new)
-                .get_result::<Answer>(conn).unwrap();
+                .get_result::<Answer>(conn)
+                .unwrap();
 
             let question: Question = questions::table
                 .find(answer.question_id)
-                .first::<Question>(conn).unwrap();
-      
+                .first::<Question>(conn)
+                .unwrap();
+
             AnswerWithQuestion {
                 id: answer.id,
                 question,
@@ -102,6 +104,18 @@ pub async fn remove(db: Db, id: i32) -> Answer {
     answer
 }
 
+pub async fn remove_answers(db: &Db, ids: Vec<i32>) -> Vec<Answer> {
+    let answers: Vec<Answer> = db
+        .run(move |conn| {
+            diesel::delete(answers::table.filter(answers::columns::id.eq_any(ids)))
+                .get_results::<Answer>(conn)
+        })
+        .await
+        .unwrap();
+
+    answers
+}
+
 pub async fn update(db: Db, id: i32, new: NewAnswer) -> AnswerWithQuestion {
     let answer: AnswerWithQuestion = db
         .run(move |conn| {
@@ -113,11 +127,13 @@ pub async fn update(db: Db, id: i32, new: NewAnswer) -> AnswerWithQuestion {
                     answers::columns::question_id.eq(new.question_id),
                     answers::columns::answer.eq(new.answer),
                 ))
-                .get_result::<Answer>(conn).unwrap();
+                .get_result::<Answer>(conn)
+                .unwrap();
 
             let question = questions::table
                 .find(answer.question_id)
-                .first::<Question>(conn).unwrap();
+                .first::<Question>(conn)
+                .unwrap();
 
             AnswerWithQuestion {
                 id: answer.id,

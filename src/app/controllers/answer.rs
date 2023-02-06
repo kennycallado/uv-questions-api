@@ -1,6 +1,6 @@
 use rocket::serde::json::Json;
 
-use crate::app::models::answer::{Answer, NewAnswer, AnswerWithQuestion};
+use crate::app::models::answer::{Answer, AnswerWithQuestion, NewAnswer};
 use crate::config::database::Db;
 
 use crate::app::repositories::answer as answer_repo;

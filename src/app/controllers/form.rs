@@ -20,7 +20,7 @@ pub async fn show(db: Db, id: i32) -> Json<FormWithQuestions> {
     Json(form)
 }
 
-#[post("/", data = "<form>")]
+#[post("/", data = "<form>")] // Should return FormWithQuestions ??
 pub async fn store(db: Db, form: Json<NewForm>) -> Json<Form> {
     let form: Form = form_repo::save(db, form.into_inner()).await;
 
@@ -41,7 +41,7 @@ pub async fn destroy(db: Db, id: i32) -> Json<Form> {
 //     Json(form)
 // }
 
-#[put("/<id>", data = "<new_form>")]
+#[put("/<id>", data = "<new_form>")] // Request with a shadowed form id...
 pub async fn update(db: Db, id: i32, new_form: Json<FormWithQuestions>) -> Json<FormWithQuestions> {
     // update the form itself
     let form: NewForm = NewForm {

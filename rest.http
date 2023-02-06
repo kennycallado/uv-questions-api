@@ -47,9 +47,7 @@ Content-Type: application/json
 
 GET http://localhost:8000/api/v1/form/10
 
-GET http://localhost:8000/api/v1/form/1
-
-PUT http://localhost:8000/api/v1/form/1
+PUT http://localhost:8000/api/v1/form/10
 Content-Type: application/json
 
 {
@@ -76,6 +74,8 @@ Content-Type: application/json
 }
 
 GET http://localhost:8000/api/v1/form/1
+
+DELETE http://localhost:8000/api/v1/form/1
 
 GET http://localhost:8000/api/v1/form
 
@@ -128,9 +128,10 @@ Content-Type: application/json
 
 GET http://localhost:8000/api/v1/answer/5
 
-DELETE http://localhost:8000/api/v1/answer/17
+DELETE http://localhost:8000/api/v1/answer/15
 
 GET http://localhost:8000/api/v1/answer
+
 #}}}
 
 # PAPERS
@@ -156,7 +157,7 @@ PUT http://localhost:8000/api/v1/paper/9
 Content-Type: application/json
 
 {
-  "id": 10,
+  "id": 9,
   "user_id": 2,
   "form_id": 4,
   "answers": [
@@ -173,7 +174,7 @@ Content-Type: application/json
 
 GET http://localhost:8000/api/v1/paper/5
 
-DELETE http://localhost:8000/api/v1/paper/9
+DELETE http://localhost:8000/api/v1/paper/10
 
 GET http://localhost:8000/api/v1/paper
 

@@ -10,32 +10,13 @@ services:
       POSTGRES_USER: question-user
       POSTGRES_PASSWORD: question-pass
 
-  # database:
-  #   image: mariadb:10.3
+  # needs to run the migrations externally
+  # test:
+  #   image: kennycallado/uv-questions-api:v0-amd64
   #   ports:
-  #     - "3306:3306"
-  #   networks:
-  #     - docker-network
+  #     - "8000:80"
   #   environment:
-  #     MARIADB_ROOT_PASSWORD: toor
-  #     MARIADB_USER: sensacion-user
-  #     MARIADB_PASSWORD: sensacion-pass
-  #     MARIADB_DATABASE: sensacion
-  #   # volumes:
-  #     # - ./database/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
-  #     # - ./database/db-1-init.sql:/docker-entrypoint-initdb.d/1.sql
-  #     # - ./database/db-2-admin.sql:/docker-entrypoint-initdb.d/2.sql
-  #     # - ./database/db-3-data.sql:/docker-entrypoint-initdb.d/3.sql
-  #   command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
-
-  # phpmyadmin:
-  #   image: phpmyadmin/phpmyadmin:latest
-  #   ports:
-  #     - "8080:80"
-  #   networks:
-  #     - docker-network
-  #   environment:
-  #     PMA_HOST: database
+  #     ROCKET_DATABASES: '{question={url="postgres://question-user:question-pass@database/questions"}}'
   #   depends_on:
   #     - database
 

@@ -51,6 +51,33 @@ pub async fn find(db: Db, id: i32) -> PaperWithAnswers {
     }
 }
 
+pub async fn find_by_user(db: Db, user_id: i32) -> Vec<PaperWithAnswers> {
+    let papers: Vec<Paper> = db
+        .run(move |conn| {
+            papers::table
+                .filter(papers::user_id.eq(user_id))
+                .load::<Paper>(conn)
+        })
+        .await
+        .unwrap();
+
+    let mut papers_with_answers: Vec<PaperWithAnswers> = Vec::new();
+    for paper in papers {
+        let user: User = paper_answer_repo::get_user(&db, paper.id).await;
+        let form: Form = paper_answer_repo::get_form(&db, paper.id).await;
+        let answers: Vec<AnswerWithQuestion> = paper_answer_repo::get_answers(&db, paper.id).await;
+
+        papers_with_answers.push(PaperWithAnswers {
+            id: paper.id,
+            form,
+            user,
+            answers,
+        });
+    }
+
+    papers_with_answers
+}
+
 pub async fn save(db: Db, new: NewPaper) -> PaperWithAnswers {
     let paper: Paper = db
         .run(move |conn| {

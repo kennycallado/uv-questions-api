@@ -193,7 +193,7 @@
               "q_type": "range",
               "question": "¿Bla bla bla bla bla bla?"
             },
-            "answer": "A"
+            "answer": "1"
           },
           ...
         ]
@@ -252,11 +252,43 @@
             "q_type": "range",
             "question": "¿Bla bla bla bla bla bla?"
           },
-          "answer": "D"
+          "answer": "1"
         },
         ...
       ]
     }
+    ```
+  - >> (show_by_user) GET /api/v1/paper/user/\<user_id\>
+    - Devuelve -> Vec\<PaperWithAnswers\>
+    ``` json
+    [
+      {
+        "id": 1,
+        "user": {
+          "id": 1,
+          "email": "bla@asflkjd.es",
+          "token": "1234567890"
+        },
+        "form": {
+          "id": 1,
+          "title": "titulo 1",
+          "description": "Questionnaire 1 of 9"
+        },
+        "answers": [
+          {
+            "id": 1,
+            "question": {
+              "id": 1,
+              "q_type": "range",
+              "question": "¿Bla bla bla bla bla bla?"
+            },
+            "answer": "1"
+          }
+          ...
+        ]
+      },
+      ...
+    ]
     ```
 
   - >> (destroy) DELETE /api/v1/paper/\<id\>
@@ -290,11 +322,11 @@
       "answers": [
         {
           "question_id": 1,
-          "answer": "BLA"
+          "answer": "1"
         },
         {
           "question_id": 2,
-          "answer": "B"
+          "answer": "1"
         }
       ]
     }
@@ -322,7 +354,7 @@
             "q_type": "range",
             "question": "¿Bla bla bla bla bla bla?"
           },
-          "answer": "BLA"
+          "answer": "1"
         },
         ...
       ]
@@ -345,7 +377,7 @@ Los siguientes endpoinds pueden ser eliminados ??
           "q_type": "range",
           "question": "¿Bla bla bla bla bla bla?"
         },
-        "answer": "A"
+        "answer": "1"
       },
       ...
     ]
@@ -356,7 +388,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     ``` json
     {
         "question_id": 1,
-        "answer": "BLA"
+        "answer": "7"
     }
     ```
 
@@ -369,7 +401,7 @@ Los siguientes endpoinds pueden ser eliminados ??
         "q_type": "range",
         "question": "¿Bla bla bla bla bla bla?"
       },
-      "answer": "BLA"
+      "answer": "7"
     }
     ```
 
@@ -383,7 +415,7 @@ Los siguientes endpoinds pueden ser eliminados ??
         "q_type": "range",
         "question": "¿Bla bla bla bla bla?"
       },
-      "answer": "E"
+      "answer": "5"
     }
     ```
 
@@ -393,7 +425,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     {
       "id": 15,
       "question_id": 1,
-      "answer": "BLA"
+      "answer": "7"
     }
     ```
 
@@ -402,7 +434,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     ``` json
     {
       "question_id": 5,
-      "answer": "BLA"
+      "answer": "7"
     }
     ```
 
@@ -415,7 +447,7 @@ Los siguientes endpoinds pueden ser eliminados ??
         "q_type": "range",
         "question": "¿Bla bla?"
       },
-      "answer": "BLA"
+      "answer": "1"
     }
     ```
 

@@ -29,6 +29,13 @@ pub async fn show(db: Db, id: i32) -> Json<PaperWithAnswers> {
     Json(paper)
 }
 
+#[get("/user/<user_id>")]
+pub async fn show_by_user(db: Db, user_id: i32) -> Json<Vec<PaperWithAnswers>> {
+    let papers: Vec<PaperWithAnswers> = paper_repo::find_by_user(db, user_id).await;
+
+    Json(papers)
+}
+
 #[post("/", data = "<paper>")]
 pub async fn store(db: Db, paper: Json<NewPaper>) -> Json<PaperWithAnswers> {
     let paper: PaperWithAnswers = paper_repo::save(db, paper.into_inner()).await;

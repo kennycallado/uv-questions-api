@@ -139,6 +139,8 @@ GET http://localhost:8000/api/v1/answer
 
 GET http://localhost:8000/api/v1/paper
 
+GET http://localhost:8000/api/v1/paper/user/1
+
 GET http://localhost:8000/api/v1/paper/2
 
 POST http://localhost:8000/api/v1/paper

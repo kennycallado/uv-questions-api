@@ -71,7 +71,7 @@ todo!()
 
 ## TODO:
 
-- Crear imagen, subirla, desplegar en pi.
+- [x] Crear imagen, subirla, desplegar en pi.
 
 - [ ] q_type debería ser una tabla?
 - [ ] Shadowing id ??

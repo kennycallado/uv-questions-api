@@ -69,6 +69,7 @@ pub fn router() -> AdHoc {
                     paper_controller::update,
                     paper_controller::log_post_req,
                     paper_controller::log_put_req,
+                    paper_controller::show_by_user,
                 ],
             )
     })

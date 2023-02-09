@@ -72,6 +72,7 @@ todo!()
 ## TODO:
 
 - [x] Crear imagen, subirla, desplegar en pi.
+- [ ] Todos find_by_user, deben buscar por token.
 
 - [ ] q_type debería ser una tabla?
 - [ ] Shadowing id ??

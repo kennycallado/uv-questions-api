@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS paper_answers;
+DROP TABLE IF EXISTS paper_answers CASCADE;

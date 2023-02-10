@@ -15,5 +15,8 @@ INSERT INTO papers (user_id, form_id) VALUES
   (2, 3),
   (3, 1),
   (3, 2),
-  (3, 3)
+  (3, 3),
+  (4, 1),
+  (4, 2),
+  (4, 3)
   ;

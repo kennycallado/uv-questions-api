@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS form_question;
+DROP TABLE IF EXISTS form_questions CASCADE;

@@ -5,6 +5,11 @@ use crate::config::database::Db;
 
 use crate::app::repositories::user as user_repo;
 
+#[options("/<id>")]
+pub async fn log_post_req(id: i32) {
+    println!("AUTH: Update user fmc_token: {}", id);
+}
+
 #[get("/")]
 pub async fn index(db: Db) -> Json<Vec<User>> {
     let users: Vec<User> = user_repo::find_all(db).await;

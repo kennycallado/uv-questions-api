@@ -45,7 +45,8 @@ pub fn router() -> AdHoc {
                     user_controller::index,
                     user_controller::show,
                     user_controller::update,
-                    user_controller::update_token
+                    user_controller::log_post_req,
+                    user_controller::update_token,
                 ],
             )
             .mount(

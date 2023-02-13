@@ -476,7 +476,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     ```
   
   - >> (update) PUT /api/v1/user/\<id\>
-    - Recibe -> 
+    - Recibe -> Json<User>
     ``` json
     {
       "id": 1,
@@ -485,7 +485,7 @@ Los siguientes endpoinds pueden ser eliminados ??
     }
     ```
 
-    - Devuelve ->
+    - Devuelve -> Json<User>
     ``` json
     {
       "id": 1,
@@ -493,3 +493,17 @@ Los siguientes endpoinds pueden ser eliminados ??
       "token": "092834342890fkojlaskfd"
     }
     ```
+
+  - >> (update_token) POST /api/v1/user/\<id\>
+    - Recibe -> Json<String>
+    ``` json
+    "askldfjñasdfsñla"
+    ```
+    - Devuelve -> Json<User>
+    ``` json
+    {
+      "id": 1,
+      "email": "kenny@blabla.es",
+      "token": "092834342890fkojlaskfd"
+      "fmc_token": "asldfkjsakldfj"
+    }

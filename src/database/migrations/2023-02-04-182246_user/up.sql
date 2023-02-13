@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS usuarios (
   id SERIAL PRIMARY KEY,
   email VARCHAR NOT NULL UNIQUE,
-  token VARCHAR NOT NULL UNIQUE
+  token VARCHAR NOT NULL UNIQUE,
+  fmc_token VARCHAR
 );
 
 INSERT INTO usuarios (email, token) VALUES

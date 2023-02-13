@@ -25,3 +25,10 @@ pub async fn update(db: Db, id: i32, user: Json<User>) -> Json<User> {
 
     Json(user)
 }
+
+#[post("/<id>", data ="<token>")]
+pub async fn update_token(db: Db, id: i32, token: Json<String>) -> Json<User> {
+    let user: User = user_repo::update_token(&db, id, token.into_inner()).await;
+
+    Json(user)
+}

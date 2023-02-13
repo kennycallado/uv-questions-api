@@ -53,6 +53,7 @@ diesel::table! {
         id -> Int4,
         email -> Varchar,
         token -> Varchar,
+        fmc_token -> Nullable<Varchar>,
     }
 }
 

@@ -39,3 +39,18 @@ pub async fn update(db: Db, id: i32, new: User) -> User {
 
     user
 }
+
+pub async fn update_token(db: &Db, id: i32, token: String) -> User {
+    let user: User = db
+        .run(move |conn| {
+            let user = diesel::update(usuarios::table.find(id));
+
+            user.set(usuarios::columns::fmc_token.eq(token))
+                .get_result::<User>(conn)
+
+        })
+        .await
+        .unwrap();
+
+    user
+}

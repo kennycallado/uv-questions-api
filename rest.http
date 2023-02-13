@@ -97,6 +97,11 @@ Content-Type: application/json
   "token": "092834342890fkojlaskfd"
 }
 
+POST http://localhost:8000/api/v1/user/1
+Content-Type: application/json
+
+"kld9234820lmklfawñei829o"
+
 GET http://localhost:8000/api/v1/user/1
 
 GET http://localhost:8000/api/v1/user

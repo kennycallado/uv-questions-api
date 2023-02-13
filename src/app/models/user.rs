@@ -8,6 +8,7 @@ pub struct User {
     pub id: i32,
     pub email: String,
     pub token: String,
+    pub fmc_token: Option<String>,
 }
 
 /*
